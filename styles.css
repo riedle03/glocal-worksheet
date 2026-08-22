@@ -1,0 +1,183 @@
+/* ─────────────────────────────────────────────────────────────
+   글로컬 AI 디지털북 프로젝트 — 활동지 모음 (포털)
+
+   일차별 활동지와 같은 팔레트·서체를 쓴다.
+   활동지가 아니라 문이므로 입력 칸도 저장도 없다.
+   ───────────────────────────────────────────────────────────── */
+
+:root {
+  --paper:    #f1eee7;
+  --sheet:    #fffdf8;
+  --ink:      #19343b;
+  --ink-2:    #50656a;
+  --ink-3:    #7f8e8c;
+  --rule:     #cfd6d0;
+  --rule-2:   #e6e8e2;
+  --pen:      #1d5964;
+  --pen-2:    #e8f2f1;
+  --pen-3:    #bfd5d3;
+  --seal:     #b45336;
+  --seal-2:   #f8ede8;
+  --shadow:   0 18px 60px rgba(38, 51, 48, .09);
+
+  --sans: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", "Malgun Gothic", system-ui, sans-serif;
+  --poem: "Noto Serif KR", "Nanum Myeongjo", "Apple SD Gothic Neo", serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(circle at 8% 2%, rgba(255,255,255,.85), transparent 26rem),
+    var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.78;
+  -webkit-font-smoothing: antialiased;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+:focus-visible { outline: 2px solid var(--pen); outline-offset: 3px; border-radius: 4px; }
+
+.page { max-width: 1060px; margin: 0 auto; padding: 68px 28px 120px; }
+.key { font-weight: 700; }
+
+/* ── 머리 ─────────────────────────────────────────────── */
+.head { margin-bottom: 52px; }
+.head__eyebrow {
+  font-size: 11px; font-weight: 800; letter-spacing: .17em;
+  color: var(--seal); margin: 0 0 18px;
+}
+.head__title {
+  font-family: var(--poem); font-weight: 700;
+  font-size: clamp(30px, 4.4vw, 50px); line-height: 1.25;
+  letter-spacing: -.04em; margin: 0 0 20px;
+}
+.head__title span { color: var(--pen); }
+.head__lede { font-size: 16.5px; color: var(--ink-2); margin: 0 0 24px; max-width: 52ch; }
+.head__meta {
+  display: flex; flex-wrap: wrap; gap: 6px 22px; margin: 0;
+  font-size: 12px; color: var(--ink-3); letter-spacing: .01em;
+}
+
+/* ── 일차 카드 ────────────────────────────────────────── */
+.cards {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
+  margin-bottom: 64px;
+}
+@media (max-width: 760px) { .cards { grid-template-columns: 1fr; } }
+
+.card {
+  display: flex; flex-direction: column;
+  position: relative; padding: 26px 26px 22px;
+  background: var(--sheet); border: 1px solid var(--rule);
+  border-radius: 20px; text-decoration: none; color: inherit;
+  box-shadow: 0 6px 20px rgba(25,52,59,.04);
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+a.card:hover, a.card:focus-visible {
+  transform: translateY(-3px);
+  border-color: var(--pen-3);
+  box-shadow: var(--shadow);
+}
+
+.card__n {
+  display: inline-block; align-self: flex-start;
+  font-size: 11.5px; font-weight: 800; letter-spacing: .06em;
+  color: #fff; background: var(--pen);
+  border-radius: 999px; padding: 3px 11px; margin-bottom: 12px;
+}
+.card__genre {
+  display: block; font-size: 12px; font-weight: 700;
+  letter-spacing: .02em; color: var(--seal); margin-bottom: 8px;
+}
+.card__title {
+  font-family: var(--poem); font-weight: 700;
+  font-size: clamp(23px, 2.6vw, 30px); line-height: 1.32;
+  letter-spacing: -.035em; margin: 0 0 14px;
+}
+.card__desc { font-size: 14.5px; color: var(--ink-2); margin: 0 0 20px; }
+
+.card__facts {
+  margin: 0 0 20px; padding-top: 15px;
+  border-top: 1px solid var(--rule-2);
+  display: grid; gap: 7px;
+}
+.card__facts > div { display: flex; gap: 10px; align-items: baseline; }
+.card__facts dt {
+  flex: 0 0 92px; font-size: 11.5px; color: var(--ink-3);
+  letter-spacing: .02em;
+}
+.card__facts dd { margin: 0; font-size: 14px; font-weight: 600; }
+
+.card__go {
+  margin-top: auto; font-size: 13px; font-weight: 750; color: var(--pen);
+  display: inline-flex; align-items: center; gap: 8px;
+}
+a.card:hover .card__go { color: var(--ink); }
+
+/* 4일차 — 아직 열리지 않았다. 자리는 보여 주되 눌리지 않는다. */
+.card--locked {
+  background: transparent;
+  border-style: dashed;
+  box-shadow: none;
+}
+.card--locked .card__n { background: var(--ink-3); }
+.card--locked .card__genre { color: var(--ink-3); }
+.card--locked .card__title,
+.card--locked .card__desc,
+.card--locked .card__facts dd { color: var(--ink-3); }
+.card__go--off { color: var(--ink-3); font-weight: 600; }
+
+/* ── 같이 여는 것 ─────────────────────────────────────── */
+.also { margin-bottom: 56px; }
+.also__h, .note__h {
+  font-family: var(--sans); font-weight: 800; font-size: 15px;
+  letter-spacing: -.01em; color: var(--pen);
+  margin: 0 0 16px; padding-bottom: 7px;
+  border-bottom: 1px solid var(--pen-3);
+}
+.also__list { list-style: none; margin: 0; padding: 0; }
+.also__list li {
+  padding: 13px 0; border-bottom: 1px solid var(--rule-2);
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 16px;
+}
+.also__list li:last-child { border-bottom: 0; }
+.also__list a {
+  font-size: 15px; font-weight: 650; color: var(--ink);
+  text-decoration: none; border-bottom: 1px solid var(--pen-3);
+  padding-bottom: 1px;
+}
+.also__list a:hover { color: var(--pen); border-bottom-color: var(--pen); }
+.also__list span { font-size: 13px; color: var(--ink-3); }
+
+/* ── 저장 안내 ────────────────────────────────────────── */
+.note {
+  background: var(--sheet); border: 1px solid var(--rule);
+  border-radius: 18px; padding: 24px 26px; margin-bottom: 56px;
+}
+.note p { margin: 0 0 12px; font-size: 14.5px; color: var(--ink-2); }
+.note p:last-child { margin-bottom: 0; }
+.note__warn {
+  margin-top: 16px !important; padding: 12px 15px;
+  background: var(--seal-2); border-left: 3px solid var(--seal);
+  border-radius: 0 10px 10px 0;
+  font-size: 13.5px; color: var(--seal) !important;
+}
+
+/* ── 발 ───────────────────────────────────────────────── */
+.foot {
+  padding-top: 26px; border-top: 1px solid var(--rule);
+  font-size: 12px; color: var(--ink-3); letter-spacing: .01em;
+}
+.foot p { margin: 0 0 4px; }
+
+@media (max-width: 560px) {
+  .page { padding: 44px 20px 80px; }
+  .card { padding: 22px 20px 20px; }
+  .card__facts dt { flex-basis: 80px; }
+}
