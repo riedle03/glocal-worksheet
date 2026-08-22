@@ -173,8 +173,10 @@ a.card:hover .card__go { color: var(--ink); }
 .foot {
   padding-top: 26px; border-top: 1px solid var(--rule);
   font-size: 12px; color: var(--ink-3); letter-spacing: .01em;
+  display: flex; flex-wrap: wrap; gap: 4px 20px;
 }
-.foot p { margin: 0 0 4px; }
+.foot a { color: var(--pen); text-decoration: none; }
+.foot a:hover { text-decoration: underline; }
 
 @media (max-width: 560px) {
   .page { padding: 44px 20px 80px; }
