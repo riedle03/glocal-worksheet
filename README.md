@@ -11,6 +11,7 @@ https://glocal-worksheet.vercel.app/
 | 1 | 시 | https://glocal-worksheet-day1.vercel.app/ |
 | 2 | 그림 에세이 | https://glocal-worksheet-day2.vercel.app/ |
 | 3 | 문화탐방기행집 설계 | https://glocal-worksheet-day3.vercel.app/ |
+| 워크숍 | 원고 합평 | https://glocal-worksheet-workshop.vercel.app/ |
 | 4 | 문화탐방기행집 | *(아직)* — 카드만 자리를 잡아 두고 잠가 두었다 |
 
 ## 왜 링크만인가
